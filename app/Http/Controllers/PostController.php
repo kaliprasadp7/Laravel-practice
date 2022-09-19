@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\Comment;
 
+// use Illuminate\Database\Query\Builder::leftJoin();
 class PostController extends Controller
 {
     public function register(Request $request)
@@ -91,7 +92,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // $user_email = $request->user()->id;
         // if($user_email -> email != "kalip.panda@nettantra.net"){
@@ -179,8 +180,18 @@ class PostController extends Controller
 
         //has many relationship
         // return Post::with('comments')->get();
+        $user_email="kalip.panda@nettantra.net";
+        if($user_email == $request->user()->email){
+            return Post::with('Comments')->get(array('id', DB::raw('CONCAT(first_name," ",last_name) as full_name')));
+        }
+        // return $request->user()->email;
+        return Post::with('Comment')->get();
 
-        return Post::with('comments')->all();
+            // foreach($result as $res){
+            //     $res
+            // }
+            // return Post::leftJoin('comments as c', 'c.id', '=', 'posts.id')
+            // ->select('posts.id','posts.first_name','posts.last_name','c.id','c.message')->get();
 
 
 

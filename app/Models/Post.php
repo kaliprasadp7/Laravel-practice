@@ -12,8 +12,13 @@ class Post extends Model
     protected $table= "posts";
 
     protected $fillable = ['first_name', 'last_name', 'contact_num', 'user_name', 'email', 'select_company', 'user_type'];
-    public function comments()
+    public function comment()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function Comments()
+    {
+        return $this->hasMany(Comment::class,'post_id', 'id')->select(['message','post_id']);
     }
 }
