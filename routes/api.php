@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ShipmentController;
+
 
 
 /*
@@ -35,6 +37,8 @@ Route::group(['middleware' => 'auth:api'], function($routes){
     Route::apiResource("post", PostController::class);
     // Route::apiResource("comment", CommentController::class);
     Route::post('post/{id}/comment/create', [CommentController::class, 'create']);
+
+    Route::post('/postage', [ShipmentController::class, 'index']);
 });
 
 // Route::post("login", [PostController::class, 'index']);

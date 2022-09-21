@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\Comment;
 
+
+
 // use Illuminate\Database\Query\Builder::leftJoin();
 class PostController extends Controller
 {
@@ -193,10 +195,6 @@ class PostController extends Controller
             // return Post::leftJoin('comments as c', 'c.id', '=', 'posts.id')
             // ->select('posts.id','posts.first_name','posts.last_name','c.id','c.message')->get();
 
-
-
-
-
     }
 
     /**
@@ -296,4 +294,5 @@ class PostController extends Controller
     {
         //
     }
+
 }
