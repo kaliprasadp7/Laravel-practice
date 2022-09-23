@@ -39,6 +39,12 @@ Route::group(['middleware' => 'auth:api'], function($routes){
     Route::post('post/{id}/comment/create', [CommentController::class, 'create']);
 
     Route::post('/postage', [ShipmentController::class, 'index']);
+    Route::post('/postage/to_address', [ShipmentController::class, 'to_address']);
+    Route::post('/postage/from_address', [ShipmentController::class, 'from_address']);
+    Route::post('/postage/parcel', [ShipmentController::class, 'parcel']);
+    Route::post('/postage/batch', [ShipmentController::class, 'batch']);
+
+
 });
 
 // Route::post("login", [PostController::class, 'index']);
