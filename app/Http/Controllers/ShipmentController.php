@@ -197,24 +197,23 @@ return $shipment;
                 'parcel' => array("id" => $prcl[0] ),
                 'carrier' => 'USPS',
                 'service' => 'Priority'
-              ),
-              array(
-                'from_address' => array("id" => $from_add[0] ),
-                'to_address' => array("id" => $to_add[0] ),
-                'parcel' => array("id" => $prcl[0] ),
-                'carrier' => 'USPS',
-                'service' => 'Priority'
-              ),
-              array(
-                'from_address' => array("id" => $from_add[0] ),
-                'to_address' => array("id" => $to_add[0] ),
-                'parcel' => array("id" => $prcl[0] ),
-                'carrier' => 'USPS',
-                'service' => 'Priority'
               )
             )
           ));
+
+          $params=array(
+            'shipments' => array(
+              array(
+                'id' => 'shp_03e7a386cea6455fb80891742d774df9',
+              ),
+              array(
+                'id' => 'shp_bec31ec42e114eb1a36d3998f668c28b',
+              )
+            )
+          );
+          $batch=$batch->add_shipments($params);
           $batch_buy=$batch->buy();
+        //   $batch_buy=$batch->label(array('file_format' => 'pdf'));
         //   return $batch_buy->label(array('file_format' => 'pdf'));
         return $batch_buy;
 
